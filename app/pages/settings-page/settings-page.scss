@@ -1,0 +1,25 @@
+@use "node_modules/@bbva-web-components/bbva-foundations-sass/main" as *;
+
+:host {
+  display: block;
+  box-sizing: border-box;
+  font-size: token('foundations.typography.typeSmall');
+  line-height: token('foundations.lineHeight.typeSmall');
+}
+
+:host([hidden]),
+[hidden] {
+  display: none !important;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+.language-settings {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
