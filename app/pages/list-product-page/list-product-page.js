@@ -70,27 +70,18 @@ class ListProductPage extends BbvaCoreIntlMixin(CellsPage) {
 
   static get properties() {
     return {
-      /**
-       * Custom keys for default texts
-       */
       i18nKeys: {
         type: Object,
         attribute: false,
       },
       _product: {
-        type: Object,
+        type: Array,
         attribute: false,
       },
       _products: {
-        type: Object,
+        type: Array,
         attribute: false,
       },
-
-      _index: {
-        type: Number,
-        attribute: false,
-      }
-
 
     };
   }
@@ -116,24 +107,6 @@ class ListProductPage extends BbvaCoreIntlMixin(CellsPage) {
   updated(props) {
     super.updated && super.updated(props);
 
-    // if (props.has('_detailOpened') && !this._detailOpened) {
-    //   this._tableMovements.cleanSelected = true;
-    // }
-
-    // if (props.has('_accountId') && this._accountId !== '') {
-    //   this._dm.getAccountMovement(this._accountId);
-    // }
-
-    // if (props.has('_accounts') && this._accounts.length) {
-    //   this._selectAccounts.querySelectorAll('bbva-web-form-option-filter').forEach(option => {
-    //     if (option.selected) {
-    //       this._accountId = option.value;
-    //       this._selectAccount = this._accounts.filter(account => account.account === this._accountId)[0];
-    //     }
-    //   });
-
-    //   this._dm.getAccountMovement(this._accountId);
-    // }
   }
 
   update(props) {
@@ -152,12 +125,11 @@ class ListProductPage extends BbvaCoreIntlMixin(CellsPage) {
     });
     this._handleAddProduct(this._product);
 
-
   }
 
   onPageLeave() {
     this._resetData();
-    this._delLocalStorage();
+
   }
 
   render() {
@@ -175,7 +147,7 @@ class ListProductPage extends BbvaCoreIntlMixin(CellsPage) {
     `;
   }
   _renderCardProduct() {
-    this._products = JSON.parse(localStorage.getItem('productos')) || [];
+    this._products = JSON.parse(localStorage.getItem('products')) || [];
     return html`
     ${this._products.map((product, index) => html`
       
@@ -200,39 +172,19 @@ class ListProductPage extends BbvaCoreIntlMixin(CellsPage) {
   }
 
 
-  _handleAddProduct(producto) {
-    // const { nameP, priceP, imageP } = this._product;
-
-
-    // const newProduct = { nameP, priceP, imageP };
-    this._products.push(producto);
-
-
-    localStorage.setItem('productos', JSON.stringify(this._products));
-
-
+  _handleAddProduct(product) {
+    this._products.push(product);
+    localStorage.setItem('products', JSON.stringify(this._products));
   }
   _delProduct(index) {
-  //   this.products = this.products.filter((_, i) => i !== index);
-  //   localStorage.setItem('products', JSON.stringify(this.products));
-  // }
-     this._products.splice(index, 1);
-
-    // const productos = JSON.parse(localStorage.getItem('productos')) || [];
-    // productos.splice(index, 1);
-    // Paso 4: Guardar los productos actualizados en el localStorage
-    localStorage.setItem('productos', JSON.stringify(this._products));
+    const filteredProducts = this._products.filter((product, i) => i !== index);
+    this._products = filteredProducts;
+    localStorage.setItem('products', JSON.stringify(filteredProducts));
   }
 
-  _delLocalStorage() {
-
-    localStorage.setItem('productos', JSON.stringify({}));
-    localStorage.removeItem('productos');
-  }
   _resetData() {
-    this._product = {},
-    this._products = {};
-
+    this._product = [],
+    this._products = [];
   }
 }
 

@@ -85,7 +85,7 @@ class CreateProductPage extends BbvaCoreIntlMixin(CellsPage) {
         attribute: false,
       },
       product: {
-        type: Object,
+        type: Array,
         attribute: false,
       }
 
