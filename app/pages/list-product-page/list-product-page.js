@@ -1,45 +1,15 @@
-/* eslint-disable no-unused-expressions */
 import { CellsPage } from '@cells/cells-page';
 import { html } from 'lit-element';
-
-// import { layout2cols } from '../../scripts/utils/layouts.js';
-// import { mask } from '@bbva-web-components/bbva-core-lit-helpers/utils/mask.js';
-// import { bbvaCopy, bbvaEdit, bbvaHelp, bbvaTasks, bbvaEmail, bbvaBuilding, bbvaFeedback } from '@bbva-web-components/bbva-foundations-icons';
 import { BbvaCoreIntlMixin } from '@bbva-web-components/bbva-core-intl-mixin';
-
-// import { MENU_ITEMS } from '../../scripts/app-routes.js';
 import '@bbva-web-components/bbva-foundations-grid-tools-layout/bbva-foundations-grid-tools-layout.js';
 import '@bbva-web-components/bbva-web-form-amount/bbva-web-form-amount.js';
 import '@bbva-web-components/bbva-web-card-product/bbva-web-card-product.js';
 import '@bbva-web-components/bbva-web-badge-default/bbva-web-badge-default.js';
 import '@bbva-web-components/bbva-web-button-default/bbva-web-button-default.js';
-
-// import '@bbva-web-components/bbva-web-expandable-accordion/bbva-web-expandable-accordion.js';
 import '@bbva-web-components/bbva-web-form-text/bbva-web-form-text.js';
 import '@bbva-web-components/bbva-web-form-checkbox/bbva-web-form-checkbox.js';
-
-// import '@bbva-web-components/bbva-web-clip-entities/bbva-web-clip-entities.js';
-// import '@bbva-web-components/bbva-web-form-select-filter/bbva-web-form-select-filter.js';
-// import '@bbva-web-components/bbva-web-list-item-definition-amount/bbva-web-list-item-definition-amount.js';
-// import '@bbva-web-components/bbva-web-notification-message/bbva-web-notification-message.js';
-// import '@bbva-web-components/bbva-web-progress-bar/bbva-web-progress-bar.js';
-// import '@bbva-web-components/bbva-web-table-filter/bbva-web-table-filter.js';
-// import '@cells-demo/demo-data-dm/demo-data-dm.js';
 import '@cells-demo/demo-web-template/demo-web-template.js';
 
-// import '@cells-demo/demo-table-movements/demo-table-movements.js';
-
-// import { bbvaWebFormCheckboxControlAmbient } from '@bbva-web-components/bbva-web-form-checkbox';
-//import { bbvaWebFormFieldAmbient } from '@bbva-web-components/bbva-web-form-text';
-//import { bbvaWebListItemDefinitionAmountAmbient } from '@bbva-web-components/bbva-web-list-item-definition-amount';
-
-// import { bbvaWebFormSelectFilterAmbient } from '@bbva-web-components/bbva-web-form-select-filter';
-import styles from './list-product-page-styles.js';
-
-// const iconset = {
-//   copy: bbvaCopy(),
-//   edit: bbvaEdit()
-// };
 
 
 const DEFAULT_I18N_KEYS = {
@@ -123,7 +93,7 @@ class ListProductPage extends BbvaCoreIntlMixin(CellsPage) {
     return html`
       <demo-web-template page-title="List Products">
         <div class="top" slot="app-top-content">
-        <h1>${this.t(this._i18nKeys.header)}</h1>
+          <h1>${this.t(this._i18nKeys.header)}</h1>
         </div>
         <div class="main" slot="app-main-content">  
           ${this._renderCardProduct()}
@@ -138,7 +108,7 @@ class ListProductPage extends BbvaCoreIntlMixin(CellsPage) {
     ${this._products.map((product, index) => html`
       
       <bbva-web-card-product
-        
+        class = "card"
         badge-text="${product.nameP}"
         button-text=""
         image="${product.imageP}"

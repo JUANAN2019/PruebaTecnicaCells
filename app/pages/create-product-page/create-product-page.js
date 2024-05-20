@@ -69,10 +69,7 @@ class CreateProductPage extends BbvaCoreIntlMixin(CellsPage) {
 
   firstUpdated(props) {
     super.firstUpdated && super.firstUpdated(props);
-
     const queryScope = this.shadowRoot || this;
-    this._dm = queryScope.querySelector('demo-data-dm');
-    this._form = queryScope.querySelector('form');
     window.IntlMsg.lang = localStorage.getItem('language') || 'en-US';
   }
 
@@ -91,18 +88,12 @@ class CreateProductPage extends BbvaCoreIntlMixin(CellsPage) {
         page-title="Create Product"
       >
         <div slot="app-top-content">
-          
         </div>
-
         <div slot="app-main-content">
           ${this._formProductTpl}
         </div>
-
-        <div slot="app-main-content" data-grid="full-width">
-         
+        <div slot="app-main-content" data-grid="full-width"> 
         </div>
-
-        <demo-data-dm @settings="${this._getUserSettings}"></demo-data-dm>
       </demo-web-template>
     `;
   }
@@ -112,13 +103,11 @@ class CreateProductPage extends BbvaCoreIntlMixin(CellsPage) {
     return html`
       
         <form enctype="multipart/form-data">
-          
-          
           <h2>${this.t(this._i18nKeys.formHeading)}</h2>
           <bbva-web-form-text id="name" label="${this.t(this._i18nKeys.labelInput1)}"></bbva-web-form-text>
           <bbva-web-form-amount id="amount" label="${this.t(this._i18nKeys.labelInput2)}"></bbva-web-form-amount>
           <bbva-web-form-text id="image" label="${this.t(this._i18nKeys.labelInput3)}"></bbva-web-form-text>
-          
+        
           <bbva-web-button-default
             id="send"
             type="button" 
@@ -135,11 +124,7 @@ class CreateProductPage extends BbvaCoreIntlMixin(CellsPage) {
   _addProduct(ev) {
     ev.preventDefault();
     ev.stopPropagation();
-
-
     const form = document.querySelector('#cells-template-create-product').shadowRoot.querySelector('form');
-
-
     const productName = form.querySelector('#name').value;
     const productPrice = form.querySelector('#amount').value;
     const productImage = form.querySelector('#image').value;

@@ -37,6 +37,10 @@
 
 .top {
   padding: .5rem 0;
+
+  h1 {
+    text-align: center;
+  }
 }
 
 .select-account {
@@ -52,7 +56,7 @@
   .definition {
     margin-bottom: auto;
 
-    & + .definition {
+    &+.definition {
       margin-left: 1rem;
     }
   }
@@ -107,13 +111,8 @@
 
 .main {
   padding: 1rem 0;
-  display: flex; /* Activa el modo Flexbox */
-  flex-wrap: wrap; 
-
-  bbva-web-card-product { /* Aplica estilos a cada tarjeta */
-    flex-basis: 50%; /* Define el ancho base de cada tarjeta (la mitad del contenedor) */
-    margin: 0.5rem; /* Agrega margen entre tarjetas */
-  }
-
+  display: flex;
+  /* Activa el modo Flexbox */
+  flex-wrap: wrap;
 
 }

@@ -40,6 +40,9 @@ export default css`
 .top {
   padding: 0.5rem 0;
 }
+.top h1 {
+  text-align: center;
+}
 
 .select-account {
   box-sizing: initial;
@@ -102,9 +105,5 @@ export default css`
   padding: 1rem 0;
   display: flex; /* Activa el modo Flexbox */
   flex-wrap: wrap;
-}
-.main bbva-web-card-product { /* Aplica estilos a cada tarjeta */
-  flex-basis: 50%; /* Define el ancho base de cada tarjeta (la mitad del contenedor) */
-  margin: 0.5rem; /* Agrega margen entre tarjetas */
 }
 `;
