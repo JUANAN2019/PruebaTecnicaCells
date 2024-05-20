@@ -103,7 +103,8 @@ export default css`
 
 .main {
   padding: 1rem 0;
-  display: flex; /* Activa el modo Flexbox */
+  display: flex;
+  /* Activa el modo Flexbox */
   flex-wrap: wrap;
 }
 `;
