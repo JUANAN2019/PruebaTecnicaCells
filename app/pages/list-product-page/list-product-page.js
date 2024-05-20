@@ -43,23 +43,9 @@ import styles from './list-product-page-styles.js';
 
 
 const DEFAULT_I18N_KEYS = {
-  accountDetail: 'dashboard-page.account-detail',
-  accountMovements: 'dashboard-page.account-movements',
-  accountNumber: 'dashboard-page.account-number',
-  accountType: 'dashboard-page.account-type',
-  alias: 'dashboard-page.alias',
-  allowableLimit: 'dashboard-page.allowable-limit',
-  arranged: 'dashboard-page.arranged',
-  arrangedAllowableLimit: 'dashboard-page.arranged-allowable-limit',
-  availableBalance: 'dashboard-page.available-balance',
-  businessName: 'dashboard-page.business-name',
-  copyAccountNumber: 'dashboard-page.copy-account-number',
-  currency: 'dashboard-page.currency',
-  difference: 'dashboard-page.difference',
-  editAlias: 'dashboard-page.edit-alias',
-  entity: 'dashboard-page.entity',
-  selectAccount: 'dashboard-page.select-account',
-  totalAccountBalance: 'dashboard-page.total-account-balance',
+  header: 'list-products.header',
+  deletebtn: 'list-products.product-button-delete'
+
 };
 
 /* eslint-disable new-cap */
@@ -137,7 +123,7 @@ class ListProductPage extends BbvaCoreIntlMixin(CellsPage) {
     return html`
       <demo-web-template page-title="List Products">
         <div class="top" slot="app-top-content">
-        <h1>Lista productos</h1>
+        <h1>${this.t(this._i18nKeys.header)}</h1>
         </div>
         <div class="main" slot="app-main-content">  
           ${this._renderCardProduct()}
@@ -153,7 +139,7 @@ class ListProductPage extends BbvaCoreIntlMixin(CellsPage) {
       
       <bbva-web-card-product
         
-        badge-text="${index + 1}. ${product.nameP}"
+        badge-text="${product.nameP}"
         button-text=""
         image="${product.imageP}"
         preheading="${product.priceP} €"
@@ -163,7 +149,7 @@ class ListProductPage extends BbvaCoreIntlMixin(CellsPage) {
             id="delProduct"
             slot="button" 
             @click="${() => this._delProduct(index)}"
-          >Eliminar
+          >${this.t(this._i18nKeys.deletebtn)}
           </bbva-web-button-default>
       </bbva-web-card-product>
 

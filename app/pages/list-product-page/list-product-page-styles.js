@@ -100,11 +100,11 @@ export default css`
 
 .main {
   padding: 1rem 0;
+  display: flex; /* Activa el modo Flexbox */
+  flex-wrap: wrap;
 }
-.main h3 {
-  font-size: var(--typographyTypeLarge, ${unsafeCSS(foundations.typography.typeLarge)});
-  line-height: var(--lineHeightTypeLarge, ${unsafeCSS(foundations.lineHeight.typeLarge)});
-  font-weight: var(--fontFacePrimaryBookFontWeight, ${unsafeCSS(foundations.fontFacePrimary.book.fontWeight)});
-  margin-bottom: 1.5rem;
+.main bbva-web-card-product { /* Aplica estilos a cada tarjeta */
+  flex-basis: 50%; /* Define el ancho base de cada tarjeta (la mitad del contenedor) */
+  margin: 0.5rem; /* Agrega margen entre tarjetas */
 }
 `;

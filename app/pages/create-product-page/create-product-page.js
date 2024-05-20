@@ -2,25 +2,9 @@
 import { html } from 'lit-element';
 import { CellsPage } from '@cells/cells-page';
 
-// import { randomID } from '@bbva-web-components/bbva-core-lit-helpers/utils/randomId.js';
 import { BbvaCoreIntlMixin } from '@bbva-web-components/bbva-core-intl-mixin';
 
-// import {
-//   bbvaCarbonfootprint,
-//   bbvaClimateaction,
-//   bbvaInclusivegrowth,
-//   bbvaFacebook,
-//   bbvaTwitter,
-//   bbvaInstagram,
-//   bbvaLinkedin,
-//   bbvaGoogleplus,
-//   bbvaPinterest,
-//   bbvaYoutube
-// } from '@bbva-web-components/bbva-foundations-icons';
-// import {
-//   expenses,
-//   moneygraphic
-// } from '@bbva-web-components/bbva-foundations-microillustrations';
+
 import '@bbva-web-components/bbva-core-collapse/bbva-core-collapse.js';
 import '@bbva-web-components/bbva-foundations-grid-tools-layout/bbva-foundations-grid-tools-layout.js';
 import '@bbva-web-components/bbva-web-form-checkbox/bbva-web-form-checkbox.js';
@@ -39,39 +23,18 @@ import '@cells-demo/demo-data-dm/demo-data-dm.js';
 import '@cells-demo/demo-web-template/demo-web-template.js';
 import styles from './create-product-page-styles.js';
 
-// const panelIcons = {
-//   carbonfootprint: bbvaCarbonfootprint(),
-//   climateaction: bbvaClimateaction(),
-//   inclusivegrowth: bbvaInclusivegrowth(),
-// };
-
-// const footerIcons = {
-//   facebook: bbvaFacebook(),
-//   twitter: bbvaTwitter(),
-//   instagram: bbvaInstagram(),
-//   linkedin: bbvaLinkedin(),
-//   googleplus: bbvaGoogleplus(),
-//   pinterest: bbvaPinterest(),
-//   youtub: bbvaYoutube()
-// };
 
 const DEFAULT_I18N_KEYS = {
 
-  // formHeading: 'login-page.form-heading',
-
-  // labelInput1: 'create-product-page.form-input-1-label',
-  // labelInput2: 'create-product-page.form-input-2-label',
-  // labelButton: 'create-product-page.form-button',
-  formHeading: 'Formulario Producto',
-
-  labelInput1: 'Nombre producto',
-  labelInput2: 'Precio producto',
-  labelInput3: 'Imagen producto(direccion)',
-  labelButton: 'Crear Producto',
+  formHeading: 'create-product.header',
+  labelInput1: 'create-product.name',
+  labelInput2: 'create-product.price',
+  labelInput3: 'create-product.image',
+  labelButton: 'create-product.button',
 
 };
 
-/* eslint-disable new-cap */
+
 class CreateProductPage extends BbvaCoreIntlMixin(CellsPage) {
   static get is() {
     return 'create-product-page';
