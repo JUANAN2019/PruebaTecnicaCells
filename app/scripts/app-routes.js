@@ -7,6 +7,7 @@ import {
 /*
  * NOTE: "path" field has to be unique, if not it will use the 1st match
  */
+// Borramos lo que no utilizamos
 export const NAVIGATION = [{
   path: '/',
   page: 'create-product',
@@ -18,21 +19,6 @@ export const NAVIGATION = [{
   path: '/list-product',
   page: 'list-product',
  
-},{
-    path: '/dashboard',
-    page: 'dashboard',
-    menuText: 'dashboard',
-    menuIcon: bbvaHome,
-}, {
-    path: '/help',
-    page: 'help',
-    menuText: 'help',
-    menuIcon: bbvaHelp,
-}, {
-    path: '/settings',
-    page: 'settings',
-    menuText: 'settings',
-    menuIcon: bbvaSettings,
 }];
 
 export const ROUTES = NAVIGATION.reduce((res, value) => {

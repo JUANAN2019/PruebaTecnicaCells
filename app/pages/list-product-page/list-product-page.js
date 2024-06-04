@@ -11,7 +11,6 @@ import '@bbva-web-components/bbva-web-form-checkbox/bbva-web-form-checkbox.js';
 import '@cells-demo/demo-web-template/demo-web-template.js';
 
 
-
 const DEFAULT_I18N_KEYS = {
   header: 'list-products.header',
   deletebtn: 'list-products.product-button-delete'
@@ -19,6 +18,7 @@ const DEFAULT_I18N_KEYS = {
 };
 
 /* eslint-disable new-cap */
+// Eliminamos ciclos de vida que no utilizamos
 class ListProductPage extends BbvaCoreIntlMixin(CellsPage) {
   static get is() {
     return 'list-product-page';
@@ -49,22 +49,6 @@ class ListProductPage extends BbvaCoreIntlMixin(CellsPage) {
     this._resetData();
   }
 
-  connectedCallback() {
-    super.connectedCallback && super.connectedCallback();
-
-  }
-
-  firstUpdated(props) {
-    super.firstUpdated && super.firstUpdated(props);
-
-
-  }
-
-  updated(props) {
-    super.updated && super.updated(props);
-
-  }
-
   update(props) {
     if (props.has('i18nKeys')) {
       this._i18nKeys = { ...DEFAULT_I18N_KEYS, ...this.i18nKeys };
@@ -83,13 +67,13 @@ class ListProductPage extends BbvaCoreIntlMixin(CellsPage) {
 
   }
 
+  //💪 muy bien reset data al salir de la pagina
   onPageLeave() {
     this._resetData();
 
   }
 
   render() {
-
     return html`
       <demo-web-template page-title="List Products">
         <div class="top" slot="app-top-content">
@@ -128,10 +112,17 @@ class ListProductPage extends BbvaCoreIntlMixin(CellsPage) {
   }
 
 
+  // Recuerda que para tratar con arrays y objetos tenemos que cambiar la referencía, para esto nos ayudamos del operador spread, evitemos hacer push
   _handleAddProduct(product) {
-    this._products.push(product);
+    this._products = [
+      ...this._products,
+      product
+    ];
+
     localStorage.setItem('products', JSON.stringify(this._products));
   }
+
+  //💪 muy bien utilizamos filter
   _delProduct(index) {
     const filteredProducts = this._products.filter((product, i) => i !== index);
     this._products = filteredProducts;

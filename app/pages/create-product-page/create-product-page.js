@@ -99,14 +99,15 @@ class CreateProductPage extends BbvaCoreIntlMixin(CellsPage) {
   }
 
 
+  //Recuerda añadir siempre el attributo name
   get _formProductTpl() {
     return html`
       
         <form enctype="multipart/form-data">
           <h2>${this.t(this._i18nKeys.formHeading)}</h2>
-          <bbva-web-form-text id="name" label="${this.t(this._i18nKeys.labelInput1)}"></bbva-web-form-text>
-          <bbva-web-form-amount id="amount" label="${this.t(this._i18nKeys.labelInput2)}"></bbva-web-form-amount>
-          <bbva-web-form-text id="image" label="${this.t(this._i18nKeys.labelInput3)}"></bbva-web-form-text>
+          <bbva-web-form-text name="name" id="name" label="${this.t(this._i18nKeys.labelInput1)}"></bbva-web-form-text>
+          <bbva-web-form-amount name="amount" id="amount" label="${this.t(this._i18nKeys.labelInput2)}"></bbva-web-form-amount>
+          <bbva-web-form-text name="image" id="image" label="${this.t(this._i18nKeys.labelInput3)}"></bbva-web-form-text>
         
           <bbva-web-button-default
             id="send"
@@ -121,13 +122,17 @@ class CreateProductPage extends BbvaCoreIntlMixin(CellsPage) {
   }
 
 
+  // Utilizamos FormData nativo para captar los valores del formulario
+
   _addProduct(ev) {
     ev.preventDefault();
     ev.stopPropagation();
-    const form = document.querySelector('#cells-template-create-product').shadowRoot.querySelector('form');
-    const productName = form.querySelector('#name').value;
-    const productPrice = form.querySelector('#amount').value;
-    const productImage = form.querySelector('#image').value;
+    const form = ev.target.closest('form');
+    const formData = new FormData(form);
+
+    const productName = formData.get('name');
+    const productPrice = formData.get('amount');
+    const productImage = formData.get('image');
 
     const details = {
       nameP: productName,
